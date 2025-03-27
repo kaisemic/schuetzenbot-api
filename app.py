@@ -7,8 +7,9 @@ import traceback
 app = Flask(__name__)
 CORS(app)
 
-openai.api_key = "sk-..."  # API-Key hier
-assistant_id = "asst_..."  # Assistant-ID hier
+import os
+openai.api_key = os.getenv("OPENAI_API_KEY")
+assistant_id = os.getenv("OPENAI_ASSISTANT_ID")
 
 @app.route("/schuetzenbot", methods=["POST"])
 def schuetzenbot():
