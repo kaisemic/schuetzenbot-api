@@ -3,6 +3,9 @@ from flask_cors import CORS
 import openai
 import time
 import traceback
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 CORS(app)
@@ -14,8 +17,8 @@ assistant_id = os.getenv("OPENAI_ASSISTANT_ID")
 
 openai.api_key = api_key
 
-print("OPENAI_API_KEY gesetzt:", bool(api_key))
-print("OPENAI_ASSISTANT_ID gesetzt:", bool(assistant_id))
+logging.info("OPENAI_API_KEY gesetzt: %s", bool(api_key))
+logging.info("OPENAI_ASSISTANT_ID gesetzt: %s", bool(assistant_id))
 
 @app.route("/schuetzenbot", methods=["POST"])
 def schuetzenbot():
