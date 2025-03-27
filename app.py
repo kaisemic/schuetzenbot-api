@@ -8,8 +8,14 @@ app = Flask(__name__)
 CORS(app)
 
 import os
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+api_key = os.getenv("OPENAI_API_KEY")
 assistant_id = os.getenv("OPENAI_ASSISTANT_ID")
+
+openai.api_key = api_key
+
+print("OPENAI_API_KEY gesetzt:", bool(api_key))
+print("OPENAI_ASSISTANT_ID gesetzt:", bool(assistant_id))
 
 @app.route("/schuetzenbot", methods=["POST"])
 def schuetzenbot():
